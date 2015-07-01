@@ -19,7 +19,6 @@ Date		2015-7-1
 
 #define SERVER_PORT 8000  
 #define BUFFER_SIZE 1024  
-#define FILE_NAME_MAX_SIZE 512  
 
 #define TRUE_SN "012345678901"
 #define CMP_NUM 12
