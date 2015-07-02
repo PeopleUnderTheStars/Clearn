@@ -17,11 +17,10 @@ Date		2015-7-1
 #include<stdarg.h>  
 #include<string.h>  
 
-#define SERVER_PORT 8000  
+#define SERVER_PORT 12760 
 #define BUFFER_SIZE 1024  
 
-#define TRUE_SN "012345678901"
-#define CMP_NUM 12
+#define TRUE_SN "a88038"
 
 int main()  
 {  
@@ -67,7 +66,7 @@ int main()
 		printf("%s\n", buffer);  
 
 		/* 判断客户端SN码的正确性 */ 
-		if(strncmp(TRUE_SN, buffer, CMP_NUM))
+		if(strncmp(TRUE_SN, buffer, strlen(TRUE_SN)))
 			result = "error";
 		else
 			result = "right";
