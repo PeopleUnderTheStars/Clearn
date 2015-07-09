@@ -20,7 +20,7 @@ Date		2015-7-1
 #define SERVER_PORT 12760 
 #define BUFFER_SIZE 1024  
 
-#define TRUE_SN "a88038"
+#define TRUE_SN "a88038204246"
 
 int main()  
 {  
@@ -66,7 +66,7 @@ int main()
 		printf("%s\n", buffer);  
 
 		/* 判断客户端SN码的正确性 */ 
-		if(strncmp(TRUE_SN, buffer, strlen(TRUE_SN)))
+		if(!strncmp(TRUE_SN, buffer, strlen(TRUE_SN)))
 			result = "error";
 		else
 			result = "right";
