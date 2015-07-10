@@ -1,0 +1,19 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2015 www.forwellwireless.com
+
+START=99
+
+mount /dev/mmcblk0p1 /mnt/
+ln -s /mnt/app/*  /www/
+
+killall redirect
+/bin/redirect &
+
+iptables -t nat -D PREROUTING 1
+iptables -t nat -D PREROUTING 1
+
+iptables -t nat -A PREROUTING -p tcp -i br-lan ! -d $(ifconfig br-lan | grep 'inet addr' | awk '{print $2}' | awk -F: '{print $2}') --dport 80 -j REDIRECT --to 10000
+iptables -t nat -A PREROUTING -p tcp -i br-lan ! -d $(ifconfig br-lan | grep 'inet addr' | awk '{print $2}' | awk -F: '{print $2}') --dport 8080 -j REDIRECT --to 10000
+
+#iptables -I FORWARD 1 -p TCP -j REJECT --reject-with tcp-reset
+#iptables -t nat -A PREROUTING -p tcp ! -d 192.168.1.1 -m multiport --dport 80,8080 -j DNAT --to 192.168.1.1:80
